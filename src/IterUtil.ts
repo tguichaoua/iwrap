@@ -1,4 +1,4 @@
-import { Predicate, TypedPredicate } from "./callbacks";
+import { Mapper, Predicate, TypedPredicate } from "./callbacks";
 
 /**
  * A collection of utility methods for `Iterable` like `Array.filter`, `Array.map`, etc.
@@ -94,8 +94,9 @@ export class IterUtil extends null {
      * function one time for each element in the iterable.
      * @see {@link Array.map}
      */
-    static *map<T, U>(source: Iterable<T>, mapper: (o: T) => U): Generator<U, void, unknown> {
-        for (const o of source) yield mapper(o);
+    static *map<T, U>(source: Iterable<T>, mapper: Mapper<T, U>): Generator<U, void, unknown> {
+        let i = 0;
+        for (const o of source) yield mapper(o, i++);
     }
 
     /**

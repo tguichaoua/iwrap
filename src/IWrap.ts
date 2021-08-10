@@ -1,6 +1,6 @@
 import { Generators } from "./Generators";
 import { IterUtil } from "./IterUtil";
-import { Predicate, TypedPredicate } from "./callbacks";
+import { Mapper, Predicate, TypedPredicate } from "./callbacks";
 
 type ToMap<T> = T extends readonly [infer K, infer V] ? Map<K, V> : never;
 
@@ -165,7 +165,7 @@ export class IWrap<T> {
      * @returns
      * @see {@link IterUtil.map}
      */
-    map<U>(mapper: (o: T) => U): IWrap<U> {
+    map<U>(mapper: Mapper<T, U>): IWrap<U> {
         return new IWrap(IterUtil.map(this.source, mapper));
     }
 
