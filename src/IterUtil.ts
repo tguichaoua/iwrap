@@ -34,7 +34,7 @@ export class IterUtil extends null {
         return IterUtil.findIndex(source, (o) => o === searchElement);
     }
 
-    static join(source: Iterable<unknown>, separator: string = ","): string {
+    static join(source: Iterable<unknown>, separator = ","): string {
         const iter = source[Symbol.iterator]();
         let current = iter.next();
         if (current.done) return "";

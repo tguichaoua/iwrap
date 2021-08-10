@@ -2,6 +2,7 @@ import { Generators } from "./Generators";
 import { IterUtil } from "./IterUtil";
 import { PartialTypeGuard, Predicate, ToMap } from "./utils";
 
+//eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IWrap<T> extends Iterable<T> {}
 
 export class IWrap<T> {
@@ -22,6 +23,7 @@ export class IWrap<T> {
     toMap(keySelector?: (o: T) => unknown, valueSelector?: (o: T) => unknown): Map<unknown, unknown> {
         if (keySelector) {
             if (!valueSelector) valueSelector = (o) => o;
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             return new Map(IterUtil.map(this.source, (o) => [keySelector(o), valueSelector!(o)] as const));
         } else {
             return new Map(this.source as unknown as Iterable<[unknown, unknown]>);
@@ -64,7 +66,7 @@ export class IWrap<T> {
     ) {
         return arguments.length === 1
             ? IterUtil.reduce(this.source, accumulator)
-            : IterUtil.reduce(this.source, accumulator, initialValue!);
+            : IterUtil.reduce(this.source, accumulator, initialValue!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
     }
 
     some(predicate: Predicate<T>): boolean {

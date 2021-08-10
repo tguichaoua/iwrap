@@ -7,7 +7,7 @@ export class Generators extends null {
     static *concat<I extends Iterable<unknown>[]>(...iterables: I): Generator<IterableType<I[number]>> {
         for (const source of iterables) {
             for (const o of source) {
-                yield o as any;
+                yield o as IterableType<I[number]>;
             }
         }
     }
