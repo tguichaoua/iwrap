@@ -1,6 +1,6 @@
 import { Generators } from "./Generators";
 import { IterUtil } from "./IterUtil";
-import { PartialTypeGuard, Predicate, ToMap } from "./utils";
+import { Predicate, ToMap, TypedPredicate } from "./utils";
 
 //eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IWrap<T> extends Iterable<T> {}
@@ -41,7 +41,7 @@ export class IWrap<T> {
         return IterUtil.every(this.source, predicate);
     }
 
-    find(predicate: Predicate<T>): T | undefined {
+    find<U extends T>(predicate: TypedPredicate<T, U>): U | undefined {
         return IterUtil.find(this.source, predicate);
     }
 
@@ -80,9 +80,7 @@ export class IWrap<T> {
         return new IWrap(Generators.concat(this.source, ...sources));
     }
 
-    filter<U extends T>(typeGuard: PartialTypeGuard<T, U>): IWrap<U>;
-    filter(predicate: Predicate<T>): IWrap<T>;
-    filter(predicate: Predicate<T>) {
+    filter<U extends T>(predicate: TypedPredicate<T, U>): IWrap<U> {
         return new IWrap(IterUtil.filter(this.source, predicate));
     }
 
@@ -94,9 +92,7 @@ export class IWrap<T> {
         return new IWrap(IterUtil.takeWhile(this.source, (_, i) => i < count));
     }
 
-    while<U extends T>(typeGuard: PartialTypeGuard<T, U>): IWrap<U>;
-    while(predicate: Predicate<T>): IWrap<T>;
-    while(predicate: Predicate<T>) {
+    while<U extends T>(predicate: TypedPredicate<T, U>): IWrap<U> {
         return new IWrap(IterUtil.takeWhile(this.source, predicate));
     }
 

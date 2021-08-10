@@ -1,4 +1,4 @@
-import { PartialTypeGuard, Predicate } from "./utils";
+import { Predicate, TypedPredicate } from "./utils";
 
 /**
  * A collection of utility methods for `Iterable` like `Array.filter`, `Array.map`, etc.
@@ -10,15 +10,12 @@ export class IterUtil extends null {
         return true;
     }
 
-    static *filter<T, U extends T>(
-        source: Iterable<T>,
-        predicate: PartialTypeGuard<T, U> | Predicate<T>,
-    ): Generator<U, void, unknown> {
+    static *filter<T, U extends T>(source: Iterable<T>, predicate: TypedPredicate<T, U>) {
         let i = 0;
         for (const o of source) if (predicate(o, i++)) yield o;
     }
 
-    static find<T>(source: Iterable<T>, predicate: Predicate<T>): T | undefined {
+    static find<T, U extends T>(source: Iterable<T>, predicate: TypedPredicate<T, U>): U | undefined {
         let i = 0;
         for (const o of source) if (predicate(o, i++)) return o;
         return undefined;
@@ -94,7 +91,7 @@ export class IterUtil extends null {
 
     static *takeWhile<T, U extends T>(
         source: Iterable<T>,
-        predicate: PartialTypeGuard<T, U> | Predicate<T>,
+        predicate: TypedPredicate<T, U>,
     ): Generator<U, void, unknown> {
         let i = 0;
         for (const o of source) {
