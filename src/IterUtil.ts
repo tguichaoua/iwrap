@@ -1,4 +1,4 @@
-import { Predicate, TypedPredicate } from "./utils";
+import { Predicate, TypedPredicate } from "./callbacks";
 
 /**
  * A collection of utility methods for `Iterable` like `Array.filter`, `Array.map`, etc.

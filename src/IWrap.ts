@@ -1,6 +1,8 @@
 import { Generators } from "./Generators";
 import { IterUtil } from "./IterUtil";
-import { Predicate, ToMap, TypedPredicate } from "./utils";
+import { Predicate, TypedPredicate } from "./callbacks";
+
+type ToMap<T> = T extends readonly [infer K, infer V] ? Map<K, V> : never;
 
 //eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IWrap<T> extends Iterable<T> {}
