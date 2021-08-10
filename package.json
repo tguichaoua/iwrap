@@ -1,7 +1,7 @@
 {
     "name": "iwrap",
     "version": "0.1.0",
-    "description": "A wrapper around Iterable to bring access to powerful methods similar to `filter`, `map`, etc ...",
+    "description": "A wrapper around Iterable to bring access to powerful methods like `filter`, `map`, etc ...",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {

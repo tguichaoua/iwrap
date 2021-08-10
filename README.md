@@ -8,7 +8,7 @@
     </a>
 </p>
 
-> A wrapper around Iterable to bring access to powerful methods similar to `filter`, `map`, etc ...
+> A wrapper around Iterable to bring access to powerful methods like `filter`, `map`, etc ...
 
 ## Install
 
