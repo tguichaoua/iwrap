@@ -55,20 +55,6 @@ const display2 = IWrap.from(scores) // from: creates a wrapper around scores.
 console.log(display2);
 ```
 
-## API
-
-### IWrap
-
-> WIP
-
-### IterUtil
-
-> WIP
-
-### Generators
-
-> WIP
-
 ## Author
 
 👤 **Tristan Guichaoua**
