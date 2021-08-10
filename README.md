@@ -21,7 +21,7 @@ npm i iwrap
 ## How to use
 
 ```ts
-import { IWrap } from ".";
+import { IWrap } from "iwrap";
 
 const scores = new Map([
     ["Alice", 500],
