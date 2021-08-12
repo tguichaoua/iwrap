@@ -67,4 +67,21 @@ describe("Generators", () => {
         it("Returns an empty array if count is negatif", () =>
             expect(Array.from(Generators.repeat("Baz", -3))).to.be.deep.equals([]));
     });
+
+    describe("zip", () => {
+        it("Zip iterables together", () =>
+            expect(
+                Array.from(Generators.zip([0, 1, 2, 3], ["a", "b", "c", "d"], [true, false, "Foo", 42])),
+            ).to.be.deep.equals([
+                [0, "a", true],
+                [1, "b", false],
+                [2, "c", "Foo"],
+                [3, "d", 42],
+            ]));
+        it("Stop when one of the iterables is done", () =>
+            expect(Array.from(Generators.zip([0, 1, 2, 3], [4, 5, 6, 7, 8, 9], [10, 11]))).to.be.deep.equals([
+                [0, 4, 10],
+                [1, 5, 11],
+            ]));
+    });
 });
