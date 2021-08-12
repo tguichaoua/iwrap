@@ -1,6 +1,6 @@
 {
     "name": "iwrap",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A wrapper around Iterable to bring access to powerful methods like `filter`, `map`, etc ...",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
