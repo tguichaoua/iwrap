@@ -187,6 +187,16 @@ export class IWrap<T> {
         return new IWrap(IterUtil.takeWhile(this.source, predicate));
     }
 
+    /**
+     * Zips this iterable with the provided iterables.
+     * @param iterables
+     * @returns
+     * @see {@link Generators.zip}
+     */
+    zip<I extends Iterable<unknown>[]>(...iterables: I) {
+        return new IWrap(Generators.zip(this.source, ...iterables));
+    }
+
     /*************************************************************************/
     /************************** Static Constructors **************************/
 
@@ -246,5 +256,14 @@ export class IWrap<T> {
      */
     static repeat<T>(value: T, count: number): IWrap<T> {
         return new IWrap(Generators.repeat(value, count));
+    }
+
+    /**
+     * Creates a {@link IWrap} based on {@link Generators.zip}.
+     * @param iterables
+     * @returns
+     */
+    static zip<I extends Iterable<unknown>[]>(...iterables: I) {
+        return new IWrap(Generators.zip(...iterables));
     }
 }
