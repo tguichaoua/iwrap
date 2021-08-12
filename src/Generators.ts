@@ -55,4 +55,29 @@ export class Generators extends null {
     static *repeat<T>(value: T, count: number) {
         for (; count > 0; --count) yield value;
     }
+
+    /**
+     * Zips same range elements from iterables into a tuple.
+     *
+     * Similar to {@link https://www.w3schools.com/python/ref_func_zip.asp Python zip}
+     * @param iterables Iterables to zip.
+     */
+    static *zip<I extends Iterable<unknown>[]>(...iterables: I): Generator<ZipResult<I>, void, unknown> {
+        const iters = iterables.map((i) => i[Symbol.iterator]());
+
+        while (true) {
+            const values = [];
+            for (const i of iters) {
+                const res = i.next();
+                if (res.done) return;
+                values.push(res.value);
+            }
+
+            yield values as unknown as ZipResult<I>;
+        }
+    }
 }
+
+type ZipResult<I extends Iterable<unknown>[]> = {
+    [K in keyof I]: I[K] extends Iterable<infer U> ? U : never;
+};
