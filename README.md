@@ -1,11 +1,14 @@
 <h1 align="center">Iterable Wrapper</h1>
 <p align="center">
     <a href="https://www.npmjs.com/package/iwrap" target="_blank">
-        <img alt="Version" src="https://img.shields.io/npm/v/iwrap.svg">
+        <img alt="Version" src="https://img.shields.io/npm/v/iwrap.svg?style=for-the-badge" height="20">
     </a>
      <a href="https://github.com/tguichaoua/iwrap/blob/main/LICENSE" target="_blank">
-        <img alt="License: MIT" src="https://img.shields.io/github/license/tguichaoua/iwrap" />
+        <img alt="License: MIT" src="https://img.shields.io/github/license/tguichaoua/iwrap?style=for-the-badge" height="20" />
     </a>
+    <span>
+        <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-no-lightgrey.svg?style=for-the-badge" height="20" />
+    </span>
 </p>
 
 > A wrapper around Iterable to bring access to powerful methods like `filter`, `map`, etc ...
